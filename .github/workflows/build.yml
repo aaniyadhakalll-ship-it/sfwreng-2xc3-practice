@@ -4,19 +4,17 @@ on:
   push:
     branches: [ "main" ]
 
-  jobs:
-    build:
-      runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@v5
-        
-        - name: build hello
-          run: gcc -o hello hello.c
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
 
-          - name: upload binary
-            uses: actions/upload-artifact@v5
-            with:
-              name: Hello World
-              path: ./hello
+      - name: build hello
+        run: gcc -o hello hello.c
 
-
+      - name: upload binary
+        uses: actions/upload-artifact@v5
+        with:
+          name: Hello World
+          path: ./hello
